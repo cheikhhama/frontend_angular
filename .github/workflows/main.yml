@@ -32,6 +32,6 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: ./angular_project/dist/اسم_مشروعك
+          local-dir: ./angular_project/dist
           server-dir: /public_html/angular_app/
           protocol: ftp
