@@ -10,31 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. سحب الكود
+      # 1. Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. إعداد Node.js
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      # 3. تثبيت dependencies
+      # 3. تثبيت dependencies داخل pixasong
       - name: Install dependencies
         run: npm install
+        working-directory: pixasong
 
       # 4. Build Angular production
       - name: Build Angular
         run: npm run build -- --configuration production
+        working-directory: pixasong
 
-      # 5. رفع الملفات إلى cPanel عبر FTP
+      # 5. Deploy to cPanel عبر FTP
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.CPANEL_HOST }}
-          username: ${{ secrets.CPANEL_USER }}
-          password: ${{ secrets.CPANEL_PASS }}
-          local-dir: ./dist/pixasong
+          server: ${{ secrets.ATF_HOST }}
+          username: ${{ secrets.ATF_USER }}
+          password: ${{ secrets.ATF_PASS }}
+          local-dir: pixasong/dist/pixasong
           server-dir: /public_html/angular_app/
           protocol: ftp
