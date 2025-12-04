@@ -34,4 +34,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: angular_project/dist/اسم_مشروعك
           server-dir: /public_html/angular_app/
-          protocol: ftp
+
