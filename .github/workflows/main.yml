@@ -19,19 +19,19 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm instalL
-        working-directory: ./angular_project
+        run: npm install
+        working-directory: angular_project
 
       - name: Build Angular
         run: npm run build -- --configuration production
-        working-directory: ./angular_project
+        working-directory: angular_project
 
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          local-dir: ./angular_project/dist
+          server: ${{ secrets.  FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: angular_project/dist/اسم_مشروعك
           server-dir: /public_html/angular_app/
           protocol: ftp
