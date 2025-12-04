@@ -35,8 +35,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.ATF_HOST }}
-          username: ${{ secrets.ATF_USER }}
-          password: ${{ secrets.ATF_PASS }}
+          username: ${{ secrets.ATF_USERNAME }}
+          password: ${{ secrets.ATF_PASSWORD }}
           local-dir: pixasong/dist/pixasong
           server-dir: /public_html/angular_app/
-          protocol: ftp
+          
