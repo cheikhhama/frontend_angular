@@ -10,32 +10,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. سحب الكود من GitHub
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. تثبيت Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      
       - name: Install dependencies
         run: npm install
+        working-directory: ./angular_project
 
-      # 4. Build Angular production
       - name: Build Angular
         run: npm run build -- --configuration production
+        working-directory: ./angular_project
 
-   
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-
         with:
           server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /public_html/angular_app
-      
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./angular_project/dist/اسم_مشروعك
+          server-dir: /public_html/angular_app/
+          protocol: ftp
