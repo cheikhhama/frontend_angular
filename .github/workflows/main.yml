@@ -34,9 +34,9 @@ jobs:
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.ATF_HOST }}
-          username: ${{ secrets.ATF_USERNAME }}
-          password: ${{ secrets.ATF_PASSWORD }}
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           local-dir: pixasong/dist/pixasong
           server-dir: /public_html/angular_app/
           
