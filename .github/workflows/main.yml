@@ -1,0 +1,40 @@
+name: Deploy Angular to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. سحب الكود من GitHub
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. تثبيت Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build Angular production
+      - name: Build Angular
+        run: npm run build -- --configuration production
+
+   
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.5.0
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /public_html/angular_app
+      
