@@ -271,60 +271,65 @@
     </button>
 
     <div class="fp-content">
-      <div class="fp-cover-wrapper">
-        <img [src]="currentSong().coverUrl" class="fp-cover">
+      <!-- Left Column: Cover & Info -->
+      <div class="fp-left">
+        <div class="fp-cover-wrapper">
+          <img [src]="currentSong().coverUrl" class="fp-cover">
+        </div>
+        <div class="fp-info">
+          <h2 class="fp-title">{{ currentSong().title }}</h2>
+          <p class="fp-artist">{{ currentSong().artist }}</p>
+          <p class="fp-album">{{ currentSong().album }}</p>
+        </div>
       </div>
 
-      <div class="fp-info">
-        <h2 class="fp-title">{{ currentSong().title }}</h2>
-        <p class="fp-artist">{{ currentSong().artist }}</p>
-        <p class="fp-album">{{ currentSong().album }}</p>
-      </div>
-
-      <!-- Sound Visualizer -->
-      <div class="visualizer" *ngIf="isPlaying()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-
-      <!-- Full Player Controls -->
-      <div class="fp-controls">
-        <div class="scrubber full-width">
-          <span class="time-current">{{ formattedCurrentTime() }}</span>
-          <div class="scrubber-track">
-            <div class="scrubber-fill" [style.width.%]="songProgressPercent()"></div>
-            <div class="scrubber-thumb" [style.left.%]="songProgressPercent()"></div>
-          </div>
-          <span class="time-total">{{ currentSong().duration }}</span>
+      <!-- Right Column: Visualizer & Controls -->
+      <div class="fp-right">
+        <!-- Sound Visualizer (Moved here) -->
+        <div class="visualizer" *ngIf="isPlaying()">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
         </div>
 
-        <div class="fp-buttons">
-          <button class="btn-control-large" (click)="previous()">
-            <svg class="icon-control-large" viewBox="0 0 24 24">
-              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
-            </svg>
-          </button>
-          <button class="btn-play-pause-large" (click)="togglePlay()">
-            <svg *ngIf="!isPlaying()" class="icon-play-large" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <svg *ngIf="isPlaying()" class="icon-play-large" viewBox="0 0 24 24">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
-            </svg>
-          </button>
-          <button class="btn-control-large" (click)="next()">
-            <svg class="icon-control-large" viewBox="0 0 24 24">
-              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
-            </svg>
-          </button>
+        <!-- Full Player Controls -->
+        <div class="fp-controls">
+          <div class="scrubber full-width">
+            <span class="time-current">{{ formattedCurrentTime() }}</span>
+            <div class="scrubber-track">
+              <div class="scrubber-fill" [style.width.%]="songProgressPercent()"></div>
+              <div class="scrubber-thumb" [style.left.%]="songProgressPercent()"></div>
+            </div>
+            <span class="time-total">{{ currentSong().duration }}</span>
+          </div>
+
+          <div class="fp-buttons">
+            <button class="btn-control-large" (click)="previous()">
+              <svg class="icon-control-large" viewBox="0 0 24 24">
+                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+              </svg>
+            </button>
+            <button class="btn-play-pause-large" (click)="togglePlay()">
+              <svg *ngIf="!isPlaying()" class="icon-play-large" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <svg *ngIf="isPlaying()" class="icon-play-large" viewBox="0 0 24 24">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+              </svg>
+            </button>
+            <button class="btn-control-large" (click)="next()">
+              <svg class="icon-control-large" viewBox="0 0 24 24">
+                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
