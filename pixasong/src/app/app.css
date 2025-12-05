@@ -1,4 +1,4 @@
-/* --- Global & Reset --- */
+﻿/* --- Global & Reset --- */
 :host {
   display: block;
   height: 100%;
@@ -1283,4 +1283,139 @@
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+/* --- PIXEL MODE & FIXES --- */
+
+/* Fix: Ensure image sizing is always robust */
+.song-cover-wrapper {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+/* --- Pixel Mode Styles --- */
+.pixel-mode {
+  --bg-pixel: #2d2d2d;
+  --text-pixel: #00ff00;
+  /* Classic Terminal Green or White? user asked for pixel art, maybe white/retro */
+  --accent-pixel: #ff00ff;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.pixel-mode .sidebar,
+.pixel-mode .mobile-header,
+.pixel-mode .player-bar,
+.pixel-mode .song-card,
+.pixel-mode .list-item,
+.pixel-mode .hero-card,
+.pixel-mode .search-input,
+.pixel-mode .nav-item,
+.pixel-mode button {
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  transition: none !important;
+}
+
+.pixel-mode .main-content {
+  background: #111;
+}
+
+.pixel-mode .sidebar,
+.pixel-mode .mobile-header,
+.pixel-mode .player-bar {
+  background-color: #000;
+  border: 4px solid #fff;
+  border-top-width: 0;
+  border-bottom-width: 4px;
+}
+
+.pixel-mode .sidebar {
+  border-top-width: 0;
+  border-right-width: 4px;
+  border-bottom-width: 0;
+}
+
+.pixel-mode .player-bar {
+  border-top: 4px solid #fff;
+  border-bottom: 0;
+}
+
+.pixel-mode * {
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+.pixel-mode .song-cover-wrapper,
+.pixel-mode .np-cover,
+.pixel-mode .list-cover,
+.pixel-mode .user-avatar img {
+  border-radius: 0 !important;
+  border: 2px solid white;
+  box-shadow: 4px 4px 0 0 black;
+  image-rendering: pixelated;
+}
+
+.pixel-mode .hero-card {
+  background: #ff3e3e;
+  /* Solid Red */
+  border: 4px solid white;
+  box-shadow: 8px 8px 0 0 black;
+}
+
+.pixel-mode .hero-glow {
+  display: none;
+}
+
+.pixel-mode .song-card:hover {
+  background-color: #333;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 0 white;
+}
+
+.pixel-mode .search-input {
+  background-color: #000;
+  border: 2px solid white;
+  color: white;
+}
+
+.pixel-mode .btn-stream {
+  background-color: white;
+  color: black;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 0 black;
+}
+
+.pixel-mode .btn-stream:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 black;
+}
+
+/* Button & Icons Fixes for Pixel */
+.pixel-mode .nav-item.active {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+}
+
+.pixel-mode .scrubber-track,
+.pixel-mode .volume-track {
+  height: 8px;
+  border: 2px solid white;
+  background: black;
+  border-radius: 0;
+}
+
+.pixel-mode .scrubber-fill,
+.pixel-mode .volume-fill {
+  background: #fa233b;
+  border-radius: 0;
+}
+
+.pixel-mode .scrubber-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

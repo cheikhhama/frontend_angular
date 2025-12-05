@@ -1,4 +1,4 @@
-<div class="app-container">
+<div class="app-container" [class.pixel-mode]="isPixelMode()">
 
   <!-- Sidebar Navigation -->
   <aside class="sidebar">
@@ -11,6 +11,14 @@
         </svg>
         <span class="brand-text">Pixasong</span>
       </div>
+
+      <!-- Mode Toggle -->
+      <button class="nav-item" (click)="togglePixelMode()">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 4h4v4H4V4zm4 4h4v4H8V8zm4 4h4v4h-4v-4zm-8 4h4v4H4v-4zm16-4h-4v4h4v-4zm0-4h-4V8h4v4zm0-4h-4V4h4v4z" />
+        </svg>
+        <span>{{ isPixelMode() ? 'Modern Mode' : 'Pixel Mode' }}</span>
+      </button>
 
       <!-- Search -->
       <div class="search-container">
@@ -55,6 +63,12 @@
     <!-- Mobile Header -->
     <div class="mobile-header">
       <span class="mobile-brand">Pixasong</span>
+      
+      <!-- Mobile Toggle -->
+      <button class="nav-item" (click)="togglePixelMode()" style="margin-right: auto; margin-left: 1rem; width: auto; padding: 0.5rem;">
+        <span>{{ isPixelMode() ? 'Modern' : 'Pixel' }}</span>
+      </button>
+
       <div class="user-avatar">
         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
       </div>
@@ -76,11 +90,11 @@
 
             <!-- Progress Bar -->
             <div class="hero-progress-bg">
-              <div class="hero-progress-fill"></div>
+              <div class="hero-progress-fill" [style.width.%]="goalProgressPercent()"></div>
             </div>
             <div class="hero-stats">
-              <span>72,400 mins</span>
-              <span>100,000 mins</span>
+              <span>{{ formattedTime() }} listened</span>
+              <span>{{ remainingGoalTime() }} mins left</span>
             </div>
           </div>
 
@@ -236,12 +250,13 @@
             d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
         </svg></button>
       <div class="volume-slider">
+        <input type="range" min="0" max="100" value="50" (input)="setVolume($event)" class="volume-range" style="width: 100%; height: 100%; opacity: 0; position: absolute; z-index: 10; cursor: pointer;">
         <svg class="icon-volume-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
         </svg>
         <div class="volume-track">
-          <div class="volume-fill"></div>
+          <div class="volume-fill" [style.width.%]="volume() * 100"></div>
         </div>
       </div>
     </div>

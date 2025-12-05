@@ -1,5 +1,5 @@
-import { Component, signal, computed, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, computed, effect, ViewEncapsulation, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 interface Song {
   id: number;
@@ -21,13 +21,18 @@ interface Category {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class App {
   // --- STATE ---
   activeTab = signal('listen-now');
   isPlaying = signal(false);
   listeningTime = signal(0); // Time in seconds
+  volume = signal(0.5); // Volume 0 to 1
+
+  // Real Audio Object (Client only)
+  audio: HTMLAudioElement | undefined;
 
   formattedTime = computed(() => {
     const totalSeconds = this.listeningTime();
@@ -42,8 +47,6 @@ export class App {
     }
     return `${pad(minutes)}:${pad(seconds)}`;
   });
-
-
 
   // --- MOCK DATA ---
   navItems: Category[] = [
@@ -64,24 +67,33 @@ export class App {
     },
   ];
 
+  isPixelMode = signal(false);
+
+  togglePixelMode() {
+    this.isPixelMode.update(v => !v);
+  }
+
+  // Demo Audio URL (Free to use sample)
+  demoAudio = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+
   songs: Song[] = [
-    { id: 1, title: 'Midnight City', artist: 'M83', album: 'Hurry Up, We\'re Dreaming', duration: '4:03', coverUrl: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop' },
-    { id: 2, title: 'Starboy', artist: 'The Weeknd', album: 'Starboy', duration: '3:50', coverUrl: 'https://images.unsplash.com/photo-1619983081563-430f63602796?w=400&h=400&fit=crop' },
-    { id: 3, title: 'Neon Lights', artist: 'Demi Lovato', album: 'Demi', duration: '3:53', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
-    { id: 4, title: 'Electric Feel', artist: 'MGMT', album: 'Oracular Spectacular', duration: '3:49', coverUrl: 'https://images.unsplash.com/photo-1514525253440-b393452e2380?w=400&h=400&fit=crop' },
-    { id: 5, title: 'Retrograde', artist: 'James Blake', album: 'Overgrown', duration: '3:43', coverUrl: 'https://images.unsplash.com/photo-1496293455756-d9584f8606e9?w=400&h=400&fit=crop' },
+    { id: 1, title: 'Midnight City', artist: 'M83', album: 'Hurry Up, We\'re Dreaming', duration: '4:03', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
+    { id: 2, title: 'Starboy', artist: 'The Weeknd', album: 'Starboy', duration: '3:50', coverUrl: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop' },
+    { id: 3, title: 'Neon Lights', artist: 'Demi Lovato', album: 'Demi', duration: '3:53', coverUrl: 'https://images.unsplash.com/photo-1619983081563-430f63602796?w=400&h=400&fit=crop' },
+
     { id: 10, title: 'Breathe', artist: 'Pink Floyd', album: 'Dark Side of the Moon', duration: '2:43', coverUrl: 'https://images.unsplash.com/photo-1501612780327-45045538702b?w=400&h=400&fit=crop' },
-    { id: 11, title: 'Dreams', artist: 'Fleetwood Mac', album: 'Rumours', duration: '4:17', coverUrl: 'https://images.unsplash.com/photo-1459749411177-0473ef716175?w=400&h=400&fit=crop' },
     { id: 12, title: 'Bohemian Rhapsody', artist: 'Queen', album: 'A Night at the Opera', duration: '5:55', coverUrl: 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&h=400&fit=crop' },
-  ];
+    { id: 15, title: 'Hotel California', artist: 'Eagles', album: 'Hotel California', duration: '6:30', coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop' },
+    { id: 16, title: 'Sweet Child O\' Mine', artist: 'Guns N\' Roses', album: 'Appetite for Destruction', duration: '5:56', coverUrl: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=400&h=400&fit=crop' },
+    { id: 17, title: 'Imagine', artist: 'John Lennon', album: 'Imagine', duration: '3:03', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
+     ];
 
   newReleases: Song[] = [
     { id: 6, title: 'Flowers', artist: 'Miley Cyrus', album: 'Endless Summer Vacation', duration: '3:20', coverUrl: 'https://images.unsplash.com/photo-1458560871784-56d23406c091?w=400&h=400&fit=crop' },
-    { id: 7, title: 'Anti-Hero', artist: 'Taylor Swift', album: 'Midnights', duration: '3:20', coverUrl: 'https://images.unsplash.com/photo-1504898770655-27596a8a60f4?w=400&h=400&fit=crop' },
     { id: 8, title: 'As It Was', artist: 'Harry Styles', album: 'Harry\'s House', duration: '2:47', coverUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=400&fit=crop' },
     { id: 9, title: 'Rich Flex', artist: 'Drake & 21 Savage', album: 'Her Loss', duration: '3:59', coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop' },
-    { id: 13, title: 'Kill Bill', artist: 'SZA', album: 'SOS', duration: '2:33', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
-    { id: 14, title: 'Creepin\'', artist: 'Metro Boomin', album: 'Heroes & Villains', duration: '3:41', coverUrl: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop' },
+    { id: 13, title: 'Kill Bill', artist: 'SZA', album: 'SOS', duration: '2:33', coverUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop' },
+    { id: 14, title: 'Creepin\'', artist: 'Metro Boomin', album: 'Heroes & Villains', duration: '3:41', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
   ];
 
   currentSong = signal<Song>(this.songs[0]);
@@ -94,38 +106,61 @@ export class App {
   currentSongTime = signal(0); // Current song progress in seconds
 
   songProgressPercent = computed(() => {
-    const duration = this.parseDuration(this.currentSong().duration);
-    if (duration === 0) return 0;
+    if (!this.audio) return 0;
+    // Use actual audio duration if available
+    const duration = this.audio.duration;
+    if (!duration || isNaN(duration)) return 0;
     return (this.currentSongTime() / duration) * 100;
+  });
+
+  // Goal: 100,000 minutes = 6,000,000 seconds
+  goalProgressPercent = computed(() => {
+    const GOAL_SECONDS = 6000000;
+    return (this.listeningTime() / GOAL_SECONDS) * 100;
+  });
+
+  remainingGoalTime = computed(() => {
+    const GOAL_MINUTES = 100000;
+    const listenedMinutes = Math.floor(this.listeningTime() / 60);
+    return (GOAL_MINUTES - listenedMinutes).toLocaleString();
   });
 
   formattedCurrentTime = computed(() => this.formatTime(this.currentSongTime()));
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.audio = new Audio();
+      // Configure global audio events
+      this.audio.volume = 0.5;
+
+      this.audio.addEventListener('timeupdate', () => {
+        if (this.audio) this.currentSongTime.set(this.audio.currentTime);
+      });
+
+      this.audio.addEventListener('ended', () => {
+        this.next();
+      });
+
+      // Error handling (auto-recovery for demo)
+      this.audio.addEventListener('error', (e) => {
+        console.error("Audio error", e);
+      });
+    }
+
     effect((onCleanup) => {
       let interval: any;
 
+      // Global timer for rewards only (independent of song progress)
       if (this.isPlaying()) {
         interval = setInterval(() => {
-          // 1. Global Listening Timer (existing)
           this.listeningTime.update(t => t + 1);
 
-          // 2. Song Progress Timer
-          const duration = this.parseDuration(this.currentSong().duration);
-          if (this.currentSongTime() < duration) {
-            this.currentSongTime.update(t => t + 1);
-          } else {
-            // Song ended
-            this.next();
-          }
-
-          // 3. Reward System (Streak every 30s of total listening)
+          // Reward System
           if (this.listeningTime() > 0 && this.listeningTime() % 30 === 0) {
             this.streak.update(s => s + 1);
             this.showReward.set(true);
             setTimeout(() => this.showReward.set(false), 3000);
           }
-
         }, 1000);
       }
 
@@ -137,7 +172,21 @@ export class App {
 
   // --- LOGIC ---
   togglePlay() {
-    this.isPlaying.set(!this.isPlaying());
+    if (!this.audio) return;
+    if (this.audio.paused) {
+      this.audio.play();
+      this.isPlaying.set(true);
+    } else {
+      this.audio.pause();
+      this.isPlaying.set(false);
+    }
+  }
+
+  setVolume(event: any) {
+    if (!this.audio) return;
+    const vol = event.target.value / 100;
+    this.audio.volume = vol;
+    this.volume.set(vol);
   }
 
   playRandomSong() {
@@ -148,9 +197,19 @@ export class App {
 
   playSong(song: Song) {
     this.currentSong.set(song);
-    this.isPlaying.set(true);
     this.isPlayerVisible.set(true);
-    this.currentSongTime.set(0); // Reset progress
+
+    if (this.audio) {
+      // Use demo audio for everything for now
+      this.audio.src = this.demoAudio;
+      this.audio.load();
+      this.audio.play().then(() => {
+        this.isPlaying.set(true);
+      }).catch(err => {
+        console.error("Playback failed", err);
+        this.isPlaying.set(false);
+      });
+    }
   }
 
   // --- HELPERS ---
@@ -164,19 +223,19 @@ export class App {
 
   formatTime(totalSeconds: number): string {
     const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
+    const seconds = Math.floor(totalSeconds % 60);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 
   next() {
     const currentIndex = this.songs.findIndex(s => s.id === this.currentSong().id);
     const nextIndex = (currentIndex + 1) % this.songs.length;
-    this.currentSong.set(this.songs[nextIndex]);
+    this.playSong(this.songs[nextIndex]);
   }
 
   previous() {
     const currentIndex = this.songs.findIndex(s => s.id === this.currentSong().id);
     const prevIndex = currentIndex === 0 ? this.songs.length - 1 : currentIndex - 1;
-    this.currentSong.set(this.songs[prevIndex]);
+    this.playSong(this.songs[prevIndex]);
   }
 }
