@@ -11,6 +11,19 @@
   background-color: #1c1c1e;
   color: white;
   overflow: hidden;
+ 
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1c1c1e;
+}
+::-webkit-scrollbar-thumb {
+  background: #333333;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
 }
 
 /* --- Scrollbar Utilities --- */
@@ -158,6 +171,7 @@
   background: linear-gradient(to bottom, #2d2d2d, #1c1c1e);
   scroll-behavior: smooth;
 }
+
 
 .mobile-header {
   display: flex;

@@ -116,14 +116,15 @@ export class App {
 
   // Goal: 100,000 minutes = 6,000,000 seconds
   goalProgressPercent = computed(() => {
-    const GOAL_SECONDS = 6000000;
+    const GOAL_SECONDS = 60000; // Demo mode: 1 minute goal
     return (this.listeningTime() / GOAL_SECONDS) * 100;
   });
 
   remainingGoalTime = computed(() => {
-    const GOAL_MINUTES = 1000;
+    const GOAL_MINUTES = 1000; // Demo mode: 1 minute goal
     const listenedMinutes = Math.floor(this.listeningTime() / 60);
-    return (GOAL_MINUTES - listenedMinutes).toLocaleString();
+    const remaining = Math.max(0, GOAL_MINUTES - listenedMinutes); // Ensure non-negative
+    return remaining.toLocaleString();
   });
 
   formattedCurrentTime = computed(() => this.formatTime(this.currentSongTime()));
