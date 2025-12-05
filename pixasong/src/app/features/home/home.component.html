@@ -1,1 +1,106 @@
-<p>home works!</p>
+<div class="app-container" [style.--bg-color]="audioService.currentSong()?.color || '#4facfe'">
+  
+  <app-badge-toast></app-badge-toast>
+  
+  <!-- Hidden Audio Element -->
+  <audio #audioPlayer (ended)="onAudioEnded()" (pause)="gameService.stopTracking()"></audio>
+
+  <!-- 1. WELCOME SLIDESHOW OVERLAY -->
+  <div class="welcome-overlay" *ngIf="showWelcome">
+    <div class="welcome-card">
+      <h1>Help Us Reach 100,000 Minutes</h1>
+      <p>Join the movement. Every second you listen raises awareness.</p>
+      
+      <div class="goal-preview">
+        <span>Global Progress</span>
+        <div class="progress-bar">
+          <div class="fill" [style.width.%]="(gameService.communitySeconds() / 6000000) * 100"></div>
+        </div>
+        <small>{{ (gameService.communitySeconds() / 60) | number:'1.0-0' }} / 100,000 mins</small>
+      </div>
+
+      <button (click)="startJourney()" class="btn-start">Start Listening</button>
+    </div>
+  </div>
+
+  <!-- 2. MAIN DASHBOARD -->
+  <div class="dashboard fade-in" *ngIf="!showWelcome">
+    
+    <!-- Navbar -->
+    <header class="glass-header">
+      <div class="user-profile">
+        <div class="avatar">👤</div>
+        <div class="user-stats">
+          <span class="label">Time Listened</span>
+          <span class="timer">{{ gameService.formatTime(gameService.listeningSeconds()) }}</span>
+        </div>
+      </div>
+      
+      <div class="community-tracker">
+        <span>Goal: 100k Mins</span>
+        <div class="mini-progress">
+          <div class="fill" [style.width.%]="(gameService.communitySeconds() / 6000000) * 100"></div>
+        </div>
+      </div>
+
+      <a routerLink="/retro" class="btn-retro">👾 Retro Mode</a>
+    </header>
+
+    <!-- Song Grid -->
+    <main class="content-grid">
+      <h2>Top Selections</h2>
+      <div class="songs-container">
+        <div class="song-card" *ngFor="let song of songs" (click)="selectSong(song)">
+          <div class="cover-wrapper">
+            <img [src]="song.cover" alt="cover">
+            <div class="play-overlay">▶</div>
+          </div>
+          <h3>{{ song.title }}</h3>
+          <p>{{ song.artist }}</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 3. FULL SCREEN PLAYER (Apple Music Style) -->
+  <div class="full-player" *ngIf="showFullPlayer && audioService.currentSong()" [class.active]="showFullPlayer">
+    
+    <button class="btn-close" (click)="closePlayer()">⌄</button>
+    
+    <div class="player-layout">
+      <!-- Left: Art & Visualizer -->
+      <div class="player-visuals">
+        <div class="album-art-big">
+          <img [src]="audioService.currentSong()?.cover" alt="Art">
+        </div>
+        <div class="visualizer-wrapper">
+          <app-visualizer mode="modern"></app-visualizer>
+        </div>
+      </div>
+
+      <!-- Right: Lyrics & Info -->
+      <div class="player-info">
+        <h1>{{ audioService.currentSong()?.title }}</h1>
+        <h2>{{ audioService.currentSong()?.artist }}</h2>
+        
+        <div class="lyrics-container">
+          <p *ngFor="let line of audioService.currentSong()?.lyrics" class="lyric-line">
+            {{ line }}
+          </p>
+        </div>
+        
+        <!-- Fake Controls -->
+        <div class="controls">
+          <button>⏮</button>
+          <button class="btn-play-pause" (click)="audioRef.nativeElement.paused ? audioRef.nativeElement.play() : audioRef.nativeElement.pause()">
+            {{ audioRef.nativeElement.paused ? '▶' : '⏸' }}
+          </button>
+          <button>⏭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOVING BACKGROUND -->
+  <div class="animated-bg"></div>
+</div>

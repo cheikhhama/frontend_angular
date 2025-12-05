@@ -1,0 +1,18 @@
+/* src/styles.css */
+
+/* Import Google Fonts */
+/* Roboto for Modern View */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/* Press Start 2P for Retro View */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: inherit;
+}

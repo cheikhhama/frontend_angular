@@ -1,0 +1,258 @@
+/* ANIMATED BACKGROUND */
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+
+.animated-bg {
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(
+    45deg,
+    var(--bg-color),
+    #000000,
+    #1a1a2e,
+    var(--bg-color)
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 1. WELCOME OVERLAY */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-card {
+  background: white;
+  color: #333;
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  animation: floatUp 0.6s ease-out;
+}
+
+/* Added Missing Progress Bar Styles for Welcome Card */
+.goal-preview {
+  margin: 1.5rem 0;
+  text-align: left;
+}
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #eee;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px 0;
+}
+.fill {
+  height: 100%;
+  background: black;
+  transition: width 0.5s ease-out;
+}
+
+.btn-start {
+  margin-top: 2rem;
+  background: black;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.btn-start:hover { transform: scale(1.05); }
+
+/* 2. DASHBOARD */
+.glass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.user-profile { display: flex; align-items: center; gap: 10px; }
+.avatar { font-size: 2rem; background: rgba(255,255,255,0.2); padding: 5px; border-radius: 50%; }
+.user-stats { display: flex; flex-direction: column; }
+.timer { font-size: 1.2rem; font-weight: bold; font-family: monospace; }
+
+/* Added Missing Styles for Header Tracker */
+.community-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 150px;
+}
+.mini-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.mini-progress .fill {
+  background: white;
+}
+
+/* Added Missing Style for Retro Button */
+.btn-retro {
+  background: #222;
+  color: #0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive, monospace; /* Requires correct font import */
+  font-size: 0.8rem;
+  transition: transform 0.2s;
+  border: 1px solid #0f0;
+}
+.btn-retro:hover { transform: scale(1.05); background: #000; box-shadow: 0 0 10px #0f0; }
+
+.songs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.song-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+.song-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-5px);
+}
+
+.cover-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.cover-wrapper img { width: 100%; display: block; }
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.song-card:hover .play-overlay { opacity: 1; }
+
+/* 3. FULL PLAYER (Apple Music Style) */
+.full-player {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.85); /* Dark tint over the animated bg */
+  backdrop-filter: blur(20px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.player-layout {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.album-art-big img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* FIX: Constrain the Visualizer so it respects the size */
+.visualizer-wrapper {
+  width: 100%;
+  max-width: 500px; /* Stops it from getting too wide */
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure the custom component behaves like a block element */
+app-visualizer {
+  display: block;
+  width: 100%;
+}
+
+.player-info h1 { font-size: 3rem; margin: 0; }
+.player-info h2 { color: #aaa; margin-top: 0.5rem; }
+
+.lyrics-container {
+  height: 200px;
+  overflow-y: auto;
+  margin: 2rem 0;
+  mask-image: linear-gradient(transparent, black 20%, black 80%, transparent);
+}
+.lyric-line { font-size: 1.5rem; margin: 1rem 0; color: rgba(255,255,255,0.7); }
+
+.controls {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  font-size: 2rem;
+}
+.btn-play-pause {
+  background: white;
+  color: black;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+.fade-in { animation: floatUp 1s ease; }
