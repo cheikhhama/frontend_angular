@@ -1209,3 +1209,78 @@
 .btn-stream:active {
   transform: scale(0.95);
 }
+
+/* --- Streak Counter --- */
+.streak-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(250, 35, 59, 0.1);
+  border-radius: 0.25rem;
+  width: fit-content;
+}
+
+.streak-icon {
+  font-size: 1rem;
+}
+
+.streak-value {
+  font-family: monospace;
+  font-weight: 700;
+  color: #fa233b;
+}
+
+/* --- Reward Toast --- */
+.reward-toast {
+  position: fixed;
+  bottom: 6rem;
+  /* Above player bar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  animation: slideUp 0.3s ease-out;
+}
+
+.reward-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.reward-icon {
+  font-size: 1.5rem;
+}
+
+.reward-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.reward-title {
+  font-weight: 700;
+  color: #fa233b;
+}
+
+.reward-subtitle {
+  font-size: 0.875rem;
+  color: #9ca3af;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
