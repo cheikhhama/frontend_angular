@@ -86,7 +86,7 @@ export class App {
     { id: 15, title: 'Hotel California', artist: 'Eagles', album: 'Hotel California', duration: '6:30', coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop' },
     { id: 16, title: 'Sweet Child O\' Mine', artist: 'Guns N\' Roses', album: 'Appetite for Destruction', duration: '5:56', coverUrl: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=400&h=400&fit=crop' },
     { id: 17, title: 'Imagine', artist: 'John Lennon', album: 'Imagine', duration: '3:03', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
-     ];
+    ];
 
   newReleases: Song[] = [
     { id: 6, title: 'Flowers', artist: 'Miley Cyrus', album: 'Endless Summer Vacation', duration: '3:20', coverUrl: 'https://images.unsplash.com/photo-1458560871784-56d23406c091?w=400&h=400&fit=crop' },
