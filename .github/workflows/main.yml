@@ -1,0 +1,42 @@
+name: Deploy Angular to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3. تثبيت dependencies داخل pixasong
+      - name: Install dependencies
+        run: npm install
+        working-directory: pixasong
+
+      # 4. Build Angular production
+      - name: Build Angular
+        run: npm run build -- --configuration production
+        working-directory: pixasong
+
+      # 5. 
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: pixasong/dist/pixasong/
+          server-dir: /public_html/angular_app/
+          
