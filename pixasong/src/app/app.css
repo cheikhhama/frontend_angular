@@ -11,17 +11,21 @@
   background-color: #1c1c1e;
   color: white;
   overflow: hidden;
- 
+
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #1c1c1e;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333333;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #444444;
 }
@@ -891,7 +895,7 @@
   left: 0;
   height: 100%;
   width: 35%;
-  background-color: #b0b0b0;
+  background-color: #fa233b;
   border-radius: 9999px;
   transition: background-color 0.2s;
 }
@@ -903,14 +907,14 @@
 .scrubber-thumb {
   position: absolute;
   top: 50%;
-  left: 35%;
+  left: 0;
   width: 0.75rem;
   height: 0.75rem;
   background-color: white;
   border-radius: 50%;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.2s;
 }
 

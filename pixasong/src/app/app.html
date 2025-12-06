@@ -235,7 +235,7 @@
       <!-- Scrubber -->
       <div class="scrubber">
         <span class="time-current">{{ formattedCurrentTime() }}</span>
-        <div class="scrubber-track">
+        <div class="scrubber-track" (click)="seek($event)">
           <div class="scrubber-fill" [style.width.%]="songProgressPercent()"></div>
           <div class="scrubber-thumb" [style.left.%]="songProgressPercent()"></div>
         </div>
@@ -294,7 +294,7 @@
         <div class="fp-controls">
           <div class="scrubber full-width">
             <span class="time-current">{{ formattedCurrentTime() }}</span>
-            <div class="scrubber-track">
+            <div class="scrubber-track" (click)="seek($event)">
               <div class="scrubber-fill" [style.width.%]="songProgressPercent()"></div>
               <div class="scrubber-thumb" [style.left.%]="songProgressPercent()"></div>
             </div>

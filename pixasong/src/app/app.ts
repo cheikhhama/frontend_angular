@@ -1,4 +1,4 @@
-import { Component, signal, computed, effect, ViewEncapsulation, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, signal, computed, effect, ViewEncapsulation, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 interface Song {
@@ -105,12 +105,11 @@ export class App {
   visualizerBars = new Array(50); // For generating visualizer bars
   showReward = signal(false);
   currentSongTime = signal(0); // Current song progress in seconds
+  audioDuration = signal(0); // Add duration signal
 
   songProgressPercent = computed(() => {
-    if (!this.audio) return 0;
-    // Use actual audio duration if available
-    const duration = this.audio.duration;
-    if (!duration || isNaN(duration)) return 0;
+    const duration = this.audioDuration();
+    if (!duration || duration === 0) return 0;
     return (this.currentSongTime() / duration) * 100;
   });
 
@@ -129,18 +128,34 @@ export class App {
 
   formattedCurrentTime = computed(() => this.formatTime(this.currentSongTime()));
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private ngZone: NgZone) {
     if (isPlatformBrowser(this.platformId)) {
       this.audio = new Audio();
       // Configure global audio events
       this.audio.volume = 0.5;
 
+      this.audio.addEventListener('loadedmetadata', () => {
+        this.ngZone.run(() => {
+          if (this.audio) this.audioDuration.set(this.audio.duration);
+        });
+      });
+
+      this.audio.addEventListener('durationchange', () => {
+        this.ngZone.run(() => {
+          if (this.audio) this.audioDuration.set(this.audio.duration);
+        });
+      });
+
       this.audio.addEventListener('timeupdate', () => {
-        if (this.audio) this.currentSongTime.set(this.audio.currentTime);
+        this.ngZone.run(() => {
+          if (this.audio) this.currentSongTime.set(this.audio.currentTime);
+        });
       });
 
       this.audio.addEventListener('ended', () => {
-        this.next();
+        this.ngZone.run(() => {
+          this.next();
+        });
       });
 
       // Error handling (auto-recovery for demo)
@@ -181,6 +196,25 @@ export class App {
     } else {
       this.audio.pause();
       this.isPlaying.set(false);
+    }
+  }
+
+  seek(event: MouseEvent) {
+    if (!this.audio) return;
+
+    const element = event.currentTarget as HTMLElement;
+    const rect = element.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const width = rect.width;
+    const percentage = clickX / width;
+
+    // Calculate new time
+    const newTime = percentage * this.audio.duration;
+
+    // Update audio
+    if (!isNaN(newTime) && isFinite(newTime)) {
+      this.audio.currentTime = newTime;
+      this.currentSongTime.set(newTime);
     }
   }
 
