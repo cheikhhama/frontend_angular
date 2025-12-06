@@ -10,32 +10,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo
+      # 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup Node.js
+      # 2. Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '22'
 
-      # Install dependencies
+      # 3. Install dependencies داخل pixasong
       - name: Install dependencies
         run: npm install
+        working-directory: pixasong
 
-      # Build Angular production
+      # 4. Build Angular production
       - name: Build Angular
         run: npm run build -- --configuration production
+        working-directory: pixasong
 
-      # Deploy to cPanel via FTP
+      # 5. Deploy to cPanel via FTP
       - name: Deploy to cPanel via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: dist/pixasong/
+          local-dir: pixasong/dist/pixasong/    # حسب اسم المشروع في angular.json
           server-dir: /public_html/angular_app/
           protocol: ftp
-
+          dangerous-clean-slate: true
