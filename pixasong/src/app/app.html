@@ -65,9 +65,13 @@
       <span class="mobile-brand">Pixasong</span>
       
       <!-- Mobile Toggle -->
-      <button class="nav-item" (click)="togglePixelMode()" style="margin-right: auto; margin-left: 1rem; width: auto; padding: 0.5rem;">
+      <button class="nav-item" (click)="togglePixelMode()" style="margin-right: 0.5rem; margin-left: auto; width: auto; padding: 0.5rem;">
         <span>{{ isPixelMode() ? 'Modern' : 'Pixel' }}</span>
       </button>
+
+      <div class="mobile-timer" style="margin-right: 1rem; color: #fa233b; font-family: monospace; font-weight: 700;">
+        {{ formattedTime() }}
+      </div>
 
       <div class="user-avatar">
         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" alt="User">
@@ -84,7 +88,7 @@
         <div class="hero-content">
           <div class="hero-text">
             <span class="hero-badge">Community Goal</span>
-            <h1 class="hero-title">Help us reach <br />1 min listened</h1>
+            <h1 class="hero-title">Help us reach <br />1000 Minutes of listening</h1>
             <p class="hero-description">Stream your favorites to unlock the exclusive "Golden Era" playlist for
               everyone.</p>
 
@@ -250,13 +254,13 @@
             d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
         </svg></button>
       <div class="volume-slider">
-        <input type="range" min="0" max="100" value="50" (input)="setVolume($event)" class="volume-range" style="width: 100%; height: 100%; opacity: 0; position: absolute; z-index: 10; cursor: pointer;">
         <svg class="icon-volume-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
         </svg>
-        <div class="volume-track">
+        <div class="volume-track" (click)="setVolumeOnClick($event)">
           <div class="volume-fill" [style.width.%]="volume() * 100"></div>
+          <div class="volume-thumb" [style.left.%]="volume() * 100"></div>
         </div>
       </div>
     </div>
@@ -320,6 +324,18 @@
                 <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
               </svg>
             </button>
+          </div>
+
+          <!-- Full Player Volume -->
+          <div class="volume-slider full-width-volume" style="width: 100%; max-width: 20rem; margin: 0 auto;">
+            <svg class="icon-volume-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            </svg>
+            <div class="volume-track" (click)="setVolumeOnClick($event)">
+              <div class="volume-fill" [style.width.%]="volume() * 100"></div>
+              <div class="volume-thumb" [style.left.%]="volume() * 100"></div>
+            </div>
           </div>
         </div>
       </div>

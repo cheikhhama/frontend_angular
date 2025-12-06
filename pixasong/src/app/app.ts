@@ -225,6 +225,21 @@ export class App {
     this.volume.set(vol);
   }
 
+  setVolumeOnClick(event: MouseEvent) {
+    if (!this.audio) return;
+    const element = event.currentTarget as HTMLElement;
+    const rect = element.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const width = rect.width;
+    let newVolume = clickX / width;
+
+    // Clamp volume between 0 and 1
+    newVolume = Math.max(0, Math.min(1, newVolume));
+
+    this.audio.volume = newVolume;
+    this.volume.set(newVolume);
+  }
+
   playRandomSong() {
     const allSongs = [...this.songs, ...this.newReleases];
     const randomIndex = Math.floor(Math.random() * allSongs.length);
