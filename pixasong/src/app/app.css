@@ -203,6 +203,11 @@
   color: #fa233b;
 }
 
+.mobile-header .nav-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem !important;
+}
+
 .user-avatar img {
   width: 2rem;
   height: 2rem;

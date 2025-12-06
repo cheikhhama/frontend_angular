@@ -77,50 +77,50 @@ export class App {
 
   // Royalty-free playlist (Archive.org)
   playlist = [
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F001.%20Alfred%20Brendel%2C%20Martin%20Sieghart%2C%20Alfred%20Brendel%20Or%20-%20Bagatelle%20for%20Piano%20in%20A%20Minor%20''Fur%20Elise''%2C%20WoO%2059.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F002.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Act%20II%2C%20Scene%2012_%20Dance%20of%20the%20Mirlito.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F003.%20Arthur%20Grumiaux%20-%20Sonata%20No.%209%20for%20Violin%20and%20Piano%20in%20%20A%20major%20-%20Kr.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F004.%20Mario%20Del%20Monaco%20-%20Nessun%20Dorma!.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F005.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Trepak%20(Russian%20Dance).mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F006.%20Orchestre%20Philharmonique%20de%20Berlin%20-%20Le%20beau%20Danube%20bleu%2C%20Op.%20314.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F007.%20Arthur%20Grumiaux%20-%20Sonata%20No.%205%20for%20Violin%20and%20Piano%20in%20%20F%20major%20-%20Sp.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F008.%20Martin%20Jones%2C%20Richard%20McMahon%20-%20Polka%20Italienne_%20Original%20Version%20for%20Piano%20Duet.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F009.%20Anne-Sophie%20Mutter%2C%20Anne-Sophie%20Mutter%20-%20Concerto%20No.%204%20in%20F%20minor%20(L'inverno_%20Winter)%20RV29.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F010.%20Bath%20Festival%20Chamber%20Orchestra%2C%20Bath%20Festival%20Orc%20-%20Brandenburg%20Concerto%20No.%203%20in%20G%20BWV1048_%20I.%20%20%20%20%5BAl.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F011.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20Serenade%20No.%2013%20in%20G%20'Eine%20kleine%20Nachtmusik'%20K525.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F012.%20Gerald%20Moore%2C%20Hans%20Hotter%20-%20Serenade.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F013.%20Giuseppe%20Di%20Stefano%2C%20Orchestra%20of%20La%20Scala%20Opera%20H%20-%20La%20donna%20e%20mobile%20(from%20Rigoletto).mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F014.%20Igor%20Markevitch%2C%20Friedrich%20Gulda%20-%20Suite%20Bergamasque_%20III.%20Clair%20de%20Lune.%20Andante%20tre.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F015.%20Dietrich%20Fischer-Dieskau%20-%20Der%20Erlkonig%20D328%20(1988%20Digital%20Remaster).mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F016.%20Walter%20Gieseking%20-%20Kinderszenen%2C%20Op.%2015%20-%20No.%207_%20Traumerei%20(Schumann).mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F017.%20Ernest%20Blanc%20-%20Carmen_%20Act%202%20-%20Votre%20toast%2C%20je%20peux%20vous%20le%20rendr.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F018.%20Georges%20Cziffra%20-%20Fantaisie-impromptu%20in%20C%20sharp%20minor%20Op.%2066.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F019.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20The%20Tale%20of%20Tsar%20Saltan_%20The%20Flight%20of%20the%20Bumble-.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F020.%20Victoria%20De%20Los%20Angeles%2C%20Choeurs%20Nationals%20De%20La%20R%20-%20Carmen_%20Recit%20%26%20Habanera_%20Quand%20je%20vous%20aimerai_...mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F021.%20Karl%20Richter%20-%20Toccata%20et%20fugue%20en%20Re%20mineur%2C%20BWV%20565.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F022.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Act%20I%2C%20Scene%202_%20March.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F023.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20Suite%20No.3%20in%20D%20major%2C%20BWV1068%20(2%20oboes%2C%203%20trumpet.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F024.%20Anne-Sophie%20Mutter%2C%20Anne-Sophie%20Mutter%2C%20English%20Ch%20-%20Concerto%20No.%202%20in%20G%20minor%20(L'estate_%20Summer)%20RV315.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F025.%20%D0%AE%D1%80%D0%B8%D0%B9%20%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%20-%20Masquerade%20Suite%20-%20Waltz.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F026.%20Jean-Bernard%20Pommier%20-%20Piano%20Sonata%20No.%2011%20in%20A%20major%20K331_K300i_%20III.%20%20%20.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F027.%20Otto%20Klemperer%20-%20Die%20Walkure%20-%20Ride%20of%20the%20Valkyries%20(2002%20Digital%20.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F028.%20Mozarteum%20Orchestra%20Salzburg%2C%20Carl%20Orff%2C%20Rudolf%20Kn%20-%20Carmina%20Burana_%20Fortuna%20Imperatrix%20Mundi_%20No.1%20''O%20.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F029.%20%D0%AE%D1%80%D0%B8%D0%B9%20%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%20-%20Gayane%20-%20Sabre%20Dance.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F030.%20Sir%20Thomas%20Beecham%2C%20Orchestre%20National%20De%20La%20Radio%20-%20Carmen_%20Act%203%20-%20Entr%E2%80%98acte.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F031.%20Wilhelm%20Backhaus%20-%20Piano%20Sonata%20No.2%20in%20B%20Flat%20Minor%20Op.35_%20III.%20Marc.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F032.%20Riccardo%20Muti%2C%20Berliner%20Philharmoniker%2C%20Swedish%20Ra%20-%20Mass%20No.%2019%20in%20D%20minor%2C%20'Requiem'%20K626_%20Lacrimosa.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F033.%20Sir%20Thomas%20Beecham%2C%20Royal%20Philharmonic%20Orchestra%2C%20%20-%20Peer%20Gynt%20-%20Incidental%20Music_%203.%20In%20the%20Hall%20of%20th.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F034.%20Nikolaus%20Harnoncourt%2C%20Royal%20Concertgebouw%20Orchestr%20-%20Strauss%2C%20Johann%20II%20_%20Die%20Fledermaus%20_%20Overture.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F035.%20Itzhak%20Perlman%20-%2024%20Caprices%2C%20Op.1_%20No.%2024%20in%20A%20Minor%20(2000%20Digital.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F036.%20Tullio%20Serafin%2C%20Orchestra%20Del%20Teatro%20Dell'Opera%20Di%20-%20La%20Traviata%20-%20Opera%20in%20three%20acts%2C%20Act%20I_%20Libiamo%20.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F037.%20Salvatore%20Accardo%2C%20Orchestra%20Da%20Camera%20Italiana%20-%20Violin%20Concerto%20N.2%20in%20B%20Minor%20'La%20Campanella'_%20II.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F038.%20Nigel%20Kennedy%20-%20Czardas.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F039.%20Georges%20Cziffra%20-%2019%20Hungarian%20Rhapsodies%20S244_%20No.%202%20in%20C%20sharp%20min.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F040.%20Luciano%20Pavarotti%2C%20The%20National%20Philharmonic%20Orche%20-%20Ave%20Maria%2C%20D839.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F041.%20Dmitri%20Alexeev%20-%20Preludes_%20Prelude%20No.%2015%20in%20D%20flat%20'Raindrop'%20(Sos.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F042.%20Seiji%20Ozawa%20-%20Rhapsody%20in%20Blue.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F043.%20St%20Petersburg%20Philharmonic%20Orchestra%2C%20St%20Petersbur%20-%20Rachmaninov_%2014%20Romances%2C%20Op.%2034_%20No.%2014%20Vocalise.mp3",
-    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022%2F044.%20Alceo%20Galliera%2C%20Philharmonia%20Orchestra%20%26%20Chorus%20-%20Act%201%2C%20Scene%201_%20La%20ran%20la%20le%20ra...Largo%20al%20factotu.mp3"
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/001.%20Alfred%20Brendel%2C%20Martin%20Sieghart%2C%20Alfred%20Brendel%20Or%20-%20Bagatelle%20for%20Piano%20in%20A%20Minor%20''Fur%20Elise''%2C%20WoO%2059.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/002.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Act%20II%2C%20Scene%2012_%20Dance%20of%20the%20Mirlito.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/003.%20Arthur%20Grumiaux%20-%20Sonata%20No.%209%20for%20Violin%20and%20Piano%20in%20%20A%20major%20-%20Kr.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/004.%20Mario%20Del%20Monaco%20-%20Nessun%20Dorma!.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/005.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Trepak%20(Russian%20Dance).mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/006.%20Orchestre%20Philharmonique%20de%20Berlin%20-%20Le%20beau%20Danube%20bleu%2C%20Op.%20314.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/007.%20Arthur%20Grumiaux%20-%20Sonata%20No.%205%20for%20Violin%20and%20Piano%20in%20%20F%20major%20-%20Sp.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/008.%20Martin%20Jones%2C%20Richard%20McMahon%20-%20Polka%20Italienne_%20Original%20Version%20for%20Piano%20Duet.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/009.%20Anne-Sophie%20Mutter%2C%20Anne-Sophie%20Mutter%20-%20Concerto%20No.%204%20in%20F%20minor%20(L'inverno_%20Winter)%20RV29.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/010.%20Bath%20Festival%20Chamber%20Orchestra%2C%20Bath%20Festival%20Orc%20-%20Brandenburg%20Concerto%20No.%203%20in%20G%20BWV1048_%20I.%20%20%20%20%5BAl.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/011.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20Serenade%20No.%2013%20in%20G%20'Eine%20kleine%20Nachtmusik'%20K525.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/012.%20Gerald%20Moore%2C%20Hans%20Hotter%20-%20Serenade.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/013.%20Giuseppe%20Di%20Stefano%2C%20Orchestra%20of%20La%20Scala%20Opera%20H%20-%20La%20donna%20e%20mobile%20(from%20Rigoletto).mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/014.%20Igor%20Markevitch%2C%20Friedrich%20Gulda%20-%20Suite%20Bergamasque_%20III.%20Clair%20de%20Lune.%20Andante%20tre.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/015.%20Dietrich%20Fischer-Dieskau%20-%20Der%20Erlkonig%20D328%20(1988%20Digital%20Remaster).mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/016.%20Walter%20Gieseking%20-%20Kinderszenen%2C%20Op.%2015%20-%20No.%207_%20Traumerei%20(Schumann).mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/017.%20Ernest%20Blanc%20-%20Carmen_%20Act%202%20-%20Votre%20toast%2C%20je%20peux%20vous%20le%20rendr.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/018.%20Georges%20Cziffra%20-%20Fantaisie-impromptu%20in%20C%20sharp%20minor%20Op.%2066.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/019.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20The%20Tale%20of%20Tsar%20Saltan_%20The%20Flight%20of%20the%20Bumble-.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/020.%20Victoria%20De%20Los%20Angeles%2C%20Choeurs%20Nationals%20De%20La%20R%20-%20Carmen_%20Recit%20%26%20Habanera_%20Quand%20je%20vous%20aimerai_...mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/021.%20Karl%20Richter%20-%20Toccata%20et%20fugue%20en%20Re%20mineur%2C%20BWV%20565.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/022.%20Sir%20Charles%20Mackerras%20-%20Nutcracker_%20Act%20I%2C%20Scene%202_%20March.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/023.%20Sir%20Neville%20Marriner%2C%20Academy%20Of%20St.%20Martin-In-The%20-%20Suite%20No.3%20in%20D%20major%2C%20BWV1068%20(2%20oboes%2C%203%20trumpet.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/024.%20Anne-Sophie%20Mutter%2C%20Anne-Sophie%20Mutter%2C%20English%20Ch%20-%20Concerto%20No.%202%20in%20G%20minor%20(L'estate_%20Summer)%20RV315.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/025.%20%D0%AE%D1%80%D0%B8%D0%B9%20%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%20-%20Masquerade%20Suite%20-%20Waltz.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/026.%20Jean-Bernard%20Pommier%20-%20Piano%20Sonata%20No.%2011%20in%20A%20major%20K331_K300i_%20III.%20%20%20.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/027.%20Otto%20Klemperer%20-%20Die%20Walkure%20-%20Ride%20of%20the%20Valkyries%20(2002%20Digital%20.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/028.%20Mozarteum%20Orchestra%20Salzburg%2C%20Carl%20Orff%2C%20Rudolf%20Kn%20-%20Carmina%20Burana_%20Fortuna%20Imperatrix%20Mundi_%20No.1%20''O%20.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/029.%20%D0%AE%D1%80%D0%B8%D0%B9%20%D0%A1%D0%B8%D0%BC%D0%BE%D0%BD%D0%BE%D0%B2%20-%20Gayane%20-%20Sabre%20Dance.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/030.%20Sir%20Thomas%20Beecham%2C%20Orchestre%20National%20De%20La%20Radio%20-%20Carmen_%20Act%203%20-%20Entr%E2%80%98acte.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/031.%20Wilhelm%20Backhaus%20-%20Piano%20Sonata%20No.2%20in%20B%20Flat%20Minor%20Op.35_%20III.%20Marc.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/032.%20Riccardo%20Muti%2C%20Berliner%20Philharmoniker%2C%20Swedish%20Ra%20-%20Mass%20No.%2019%20in%20D%20minor%2C%20'Requiem'%20K626_%20Lacrimosa.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/033.%20Sir%20Thomas%20Beecham%2C%20Royal%20Philharmonic%20Orchestra%2C%20%20-%20Peer%20Gynt%20-%20Incidental%20Music_%203.%20In%20the%20Hall%20of%20th.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/034.%20Nikolaus%20Harnoncourt%2C%20Royal%20Concertgebouw%20Orchestr%20-%20Strauss%2C%20Johann%20II%20_%20Die%20Fledermaus%20_%20Overture.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/035.%20Itzhak%20Perlman%20-%2024%20Caprices%2C%20Op.1_%20No.%2024%20in%20A%20Minor%20(2000%20Digital.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/036.%20Tullio%20Serafin%2C%20Orchestra%20Del%20Teatro%20Dell'Opera%20Di%20-%20La%20Traviata%20-%20Opera%20in%20three%20acts%2C%20Act%20I_%20Libiamo%20.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/037.%20Salvatore%20Accardo%2C%20Orchestra%20Da%20Camera%20Italiana%20-%20Violin%20Concerto%20N.2%20in%20B%20Minor%20'La%20Campanella'_%20II.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/038.%20Nigel%20Kennedy%20-%20Czardas.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/039.%20Georges%20Cziffra%20-%2019%20Hungarian%20Rhapsodies%20S244_%20No.%202%20in%20C%20sharp%20min.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/040.%20Luciano%20Pavarotti%2C%20The%20National%20Philharmonic%20Orche%20-%20Ave%20Maria%2C%20D839.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/041.%20Dmitri%20Alexeev%20-%20Preludes_%20Prelude%20No.%2015%20in%20D%20flat%20'Raindrop'%20(Sos.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/042.%20Seiji%20Ozawa%20-%20Rhapsody%20in%20Blue.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/043.%20St%20Petersburg%20Philharmonic%20Orchestra%2C%20St%20Petersbur%20-%20Rachmaninov_%2014%20Romances%2C%20Op.%2034_%20No.%2014%20Vocalise.mp3",
+    "https://archive.org/download/100-best-of-classical-songs-2022/100BestClassicSongs2022/044.%20Alceo%20Galliera%2C%20Philharmonia%20Orchestra%20%26%20Chorus%20-%20Act%201%2C%20Scene%201_%20La%20ran%20la%20le%20ra...Largo%20al%20factotu.mp3"
   ];
 
   // Demo Audio URL
@@ -277,9 +277,13 @@ export class App {
         });
       });
 
-      // Error handling (auto-recovery for demo)
+      // Error handling (auto-recovery)
       this.audio.addEventListener('error', (e) => {
         console.error("Audio error", e);
+        // Auto-skip to next song if current one fails
+        setTimeout(() => {
+          this.ngZone.run(() => this.next());
+        }, 1000);
       });
     }
 
