@@ -8,6 +8,7 @@ interface Song {
   album: string;
   coverUrl: string;
   duration: string;
+  audioUrl?: string;
 }
 
 interface Category {
@@ -77,23 +78,53 @@ export class App {
   demoAudio = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 
   songs: Song[] = [
-    { id: 1, title: 'Midnight City', artist: 'M83', album: 'Hurry Up, We\'re Dreaming', duration: '4:03', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
-    { id: 2, title: 'Starboy', artist: 'The Weeknd', album: 'Starboy', duration: '3:50', coverUrl: 'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop' },
-    { id: 3, title: 'Neon Lights', artist: 'Demi Lovato', album: 'Demi', duration: '3:53', coverUrl: 'https://images.unsplash.com/photo-1619983081563-430f63602796?w=400&h=400&fit=crop' },
-
-    { id: 10, title: 'Breathe', artist: 'Pink Floyd', album: 'Dark Side of the Moon', duration: '2:43', coverUrl: 'https://images.unsplash.com/photo-1501612780327-45045538702b?w=400&h=400&fit=crop' },
-    { id: 12, title: 'Bohemian Rhapsody', artist: 'Queen', album: 'A Night at the Opera', duration: '5:55', coverUrl: 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?w=400&h=400&fit=crop' },
-    { id: 15, title: 'Hotel California', artist: 'Eagles', album: 'Hotel California', duration: '6:30', coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop' },
-    { id: 16, title: 'Sweet Child O\' Mine', artist: 'Guns N\' Roses', album: 'Appetite for Destruction', duration: '5:56', coverUrl: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=400&h=400&fit=crop' },
-    { id: 17, title: 'Imagine', artist: 'John Lennon', album: 'Imagine', duration: '3:03', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
+    { id: 1, title: 'Cruel Summer', artist: 'Taylor Swift', album: 'Lover', duration: '6:12', coverUrl: 'https://picsum.photos/seed/1/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+    { id: 2, title: 'Vampire', artist: 'Olivia Rodrigo', album: 'GUTS', duration: '7:15', coverUrl: 'https://picsum.photos/seed/2/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { id: 3, title: 'Seven', artist: 'Jung Kook', album: 'Golden', duration: '5:44', coverUrl: 'https://picsum.photos/seed/3/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+    { id: 4, title: 'Paint The Town Red', artist: 'Doja Cat', album: 'Scarlet', duration: '5:02', coverUrl: 'https://picsum.photos/seed/4/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+    { id: 5, title: 'Dance The Night', artist: 'Dua Lipa', album: 'Barbie Album', duration: '5:53', coverUrl: 'https://picsum.photos/seed/5/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+    { id: 6, title: 'Flowers', artist: 'Miley Cyrus', album: 'Endless Summer Vacation', duration: '5:46', coverUrl: 'https://picsum.photos/seed/6/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+    { id: 7, title: 'Anti-Hero', artist: 'Taylor Swift', album: 'Midnights', duration: '4:21', coverUrl: 'https://picsum.photos/seed/7/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+    { id: 8, title: 'As It Was', artist: 'Harry Styles', album: 'Harry\'s House', duration: '5:20', coverUrl: 'https://picsum.photos/seed/8/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' },
+    { id: 9, title: 'Rich Flex', artist: 'Drake & 21 Savage', album: 'Her Loss', duration: '4:48', coverUrl: 'https://picsum.photos/seed/9/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3' },
+    { id: 10, title: 'Kill Bill', artist: 'SZA', album: 'SOS', duration: '6:12', coverUrl: 'https://picsum.photos/seed/10/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3' },
+    { id: 11, title: 'Creepin\'', artist: 'Metro Boomin', album: 'Heroes & Villains', duration: '5:33', coverUrl: 'https://picsum.photos/seed/11/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3' },
+    { id: 12, title: 'Die For You', artist: 'The Weeknd', album: 'Starboy', duration: '6:10', coverUrl: 'https://picsum.photos/seed/12/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3' },
+    { id: 13, title: 'Last Night', artist: 'Morgan Wallen', album: 'One Thing At A Time', duration: '6:30', coverUrl: 'https://picsum.photos/seed/13/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3' },
+    { id: 14, title: 'Calm Down', artist: 'Rema & Selena Gomez', album: 'Rave & Roses', duration: '5:27', coverUrl: 'https://picsum.photos/seed/14/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3' },
+    { id: 15, title: 'Boy\'s a liar Pt. 2', artist: 'PinkPantheress', album: 'Take me home', duration: '4:35', coverUrl: 'https://picsum.photos/seed/15/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3' },
+    { id: 16, title: 'Fast Car', artist: 'Luke Combs', album: 'Gettin\' Old', duration: '7:05', coverUrl: 'https://picsum.photos/seed/16/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3' },
+    { id: 17, title: 'Chemical', artist: 'Post Malone', album: 'Austin', duration: '6:12', coverUrl: 'https://picsum.photos/seed/17/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+    { id: 18, title: 'All My Life', artist: 'Lil Durk', album: 'Almost Healed', duration: '7:15', coverUrl: 'https://picsum.photos/seed/18/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { id: 19, title: 'Ella Baila Sola', artist: 'Eslabon Armado', album: 'Desvelado', duration: '5:44', coverUrl: 'https://picsum.photos/seed/19/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+    { id: 20, title: 'Unholy', artist: 'Sam Smith', album: 'Gloria', duration: '5:02', coverUrl: 'https://picsum.photos/seed/20/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+    { id: 21, title: 'Super Shy', artist: 'NewJeans', album: 'Get Up', duration: '5:53', coverUrl: 'https://picsum.photos/seed/21/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+    { id: 22, title: 'Daylight', artist: 'David Kushner', album: 'Daylight', duration: '5:46', coverUrl: 'https://picsum.photos/seed/22/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+    { id: 23, title: 'I Remember Everything', artist: 'Zach Bryan', album: 'Zach Bryan', duration: '4:21', coverUrl: 'https://picsum.photos/seed/23/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+    { id: 24, title: 'What Was I Made For?', artist: 'Billie Eilish', album: 'Barbie Album', duration: '5:20', coverUrl: 'https://picsum.photos/seed/24/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' },
+    { id: 25, title: 'Lala', artist: 'Myke Towers', album: 'La Vida Es Una', duration: '4:48', coverUrl: 'https://picsum.photos/seed/25/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3' },
+    { id: 26, title: 'Blank Space', artist: 'Taylor Swift', album: '1989', duration: '6:12', coverUrl: 'https://picsum.photos/seed/26/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3' },
+    { id: 27, title: 'Style', artist: 'Taylor Swift', album: '1989', duration: '5:33', coverUrl: 'https://picsum.photos/seed/27/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3' },
+    { id: 28, title: 'Bad Blood', artist: 'Taylor Swift', album: '1989', duration: '6:10', coverUrl: 'https://picsum.photos/seed/28/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3' },
+    { id: 29, title: 'Shake It Off', artist: 'Taylor Swift', album: '1989', duration: '6:30', coverUrl: 'https://picsum.photos/seed/29/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3' },
+    { id: 30, title: 'Midnight City', artist: 'M83', album: 'Hurry Up, We\'re Dreaming', duration: '5:27', coverUrl: 'https://picsum.photos/seed/30/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3' },
+    { id: 31, title: 'Heroes', artist: 'David Bowie', album: 'Heroes', duration: '4:35', coverUrl: 'https://picsum.photos/seed/31/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3' },
+    { id: 32, title: 'Starman', artist: 'David Bowie', album: 'Ziggy Stardust', duration: '7:05', coverUrl: 'https://picsum.photos/seed/32/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3' },
+    { id: 33, title: 'Bohemian Rhapsody', artist: 'Queen', album: 'A Night at the Opera', duration: '6:12', coverUrl: 'https://picsum.photos/seed/33/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+    { id: 34, title: 'Hotel California', artist: 'Eagles', album: 'Hotel California', duration: '7:15', coverUrl: 'https://picsum.photos/seed/34/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+    { id: 35, title: 'Sweet Child O\' Mine', artist: 'Guns N\' Roses', album: 'Appetite for Destruction', duration: '5:44', coverUrl: 'https://picsum.photos/seed/35/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+    { id: 36, title: 'Smells Like Teen Spirit', artist: 'Nirvana', album: 'Nevermind', duration: '5:02', coverUrl: 'https://picsum.photos/seed/36/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+    { id: 37, title: 'Billie Jean', artist: 'Michael Jackson', album: 'Thriller', duration: '5:53', coverUrl: 'https://picsum.photos/seed/37/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+    { id: 38, title: 'Thriller', artist: 'Michael Jackson', album: 'Thriller', duration: '5:46', coverUrl: 'https://picsum.photos/seed/38/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+    { id: 39, title: 'Beat It', artist: 'Michael Jackson', album: 'Thriller', duration: '4:21', coverUrl: 'https://picsum.photos/seed/39/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+    { id: 40, title: 'Take On Me', artist: 'a-ha', album: 'Hunting High and Low', duration: '5:20', coverUrl: 'https://picsum.photos/seed/40/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' },
   ];
 
   newReleases: Song[] = [
-    { id: 6, title: 'Flowers', artist: 'Miley Cyrus', album: 'Endless Summer Vacation', duration: '3:20', coverUrl: 'https://images.unsplash.com/photo-1458560871784-56d23406c091?w=400&h=400&fit=crop' },
-    { id: 8, title: 'As It Was', artist: 'Harry Styles', album: 'Harry\'s House', duration: '2:47', coverUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=400&fit=crop' },
-    { id: 9, title: 'Rich Flex', artist: 'Drake & 21 Savage', album: 'Her Loss', duration: '3:59', coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop' },
-    { id: 13, title: 'Kill Bill', artist: 'SZA', album: 'SOS', duration: '2:33', coverUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop' },
-    { id: 14, title: 'Creepin\'', artist: 'Metro Boomin', album: 'Heroes & Villains', duration: '3:41', coverUrl: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?w=400&h=400&fit=crop' },
+    { id: 41, title: 'Houdini', artist: 'Dua Lipa', album: 'Houdini', duration: '3:05', coverUrl: 'https://picsum.photos/seed/41/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3' },
+    { id: 42, title: 'Is It Over Now?', artist: 'Taylor Swift', album: '1989 (TV)', duration: '3:49', coverUrl: 'https://picsum.photos/seed/42/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3' },
+    { id: 43, title: 'Agora Hills', artist: 'Doja Cat', album: 'Scarlet', duration: '4:25', coverUrl: 'https://picsum.photos/seed/43/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3' },
+    { id: 44, title: 'Water', artist: 'Tyla', album: 'Tyla', duration: '3:20', coverUrl: 'https://picsum.photos/seed/44/400/400', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3' },
   ];
 
   currentSong = signal<Song>(this.songs[0]);
@@ -251,8 +282,8 @@ export class App {
     this.isPlayerVisible.set(true);
 
     if (this.audio) {
-      // Use demo audio for everything for now
-      this.audio.src = this.demoAudio;
+      // Use song audio or fallback to demo
+      this.audio.src = song.audioUrl || this.demoAudio;
       this.audio.load();
       this.audio.play().then(() => {
         this.isPlaying.set(true);
