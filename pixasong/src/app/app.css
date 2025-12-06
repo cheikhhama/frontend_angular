@@ -1432,12 +1432,20 @@
 
 .pixel-mode .song-cover-wrapper,
 .pixel-mode .np-cover,
-.pixel-mode .list-cover,
-.pixel-mode .user-avatar img {
+.pixel-mode .list-cover {
   border-radius: 0 !important;
   border: 2px solid white;
   box-shadow: 4px 4px 0 0 black;
   image-rendering: pixelated;
+}
+
+.pixel-mode .user-avatar img,
+.pixel-mode .desktop-profile img {
+  border: 2px solid white !important;
+  box-shadow: 2px 2px 0 0 black;
+  image-rendering: pixelated;
+  /* Keep it round */
+  border-radius: 50% !important; 
 }
 
 .pixel-mode .hero-card {

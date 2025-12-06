@@ -264,6 +264,21 @@ export class App {
         if (interval) clearInterval(interval);
       });
     });
+
+    // Persistence for Pixel Mode
+    if (isPlatformBrowser(this.platformId)) {
+      const savedMode = localStorage.getItem('pixelMode');
+      if (savedMode !== null) {
+        this.isPixelMode.set(savedMode === 'true');
+      }
+    }
+
+    effect(() => {
+      const isPixel = this.isPixelMode();
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('pixelMode', String(isPixel));
+      }
+    });
   }
 
   // --- LOGIC ---
