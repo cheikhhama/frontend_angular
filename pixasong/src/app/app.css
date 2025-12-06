@@ -1505,3 +1505,64 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* --- Mobile Full Player Controls --- */
+@media (max-width: 640px) {
+  .fp-buttons {
+    gap: 1.5rem;
+  }
+
+  .btn-play-pause-large {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .icon-play-large {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .btn-control-large .icon-control-large {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .fp-controls {
+    gap: 1rem;
+  }
+}
+
+/* --- Desktop Profile --- */
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.brand {
+  margin-bottom: 0;
+  /* Reset for flex layout */
+}
+
+.desktop-profile img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.desktop-profile img:hover {
+  transform: scale(1.1);
+  border-color: #fa233b;
+}
+
+/* Hide desktop profile on mobile since it's in the header */
+@media (max-width: 768px) {
+  .desktop-profile {
+    display: none;
+  }
+}
