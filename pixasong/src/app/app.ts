@@ -1,5 +1,6 @@
 import { Component, signal, computed, effect, ViewEncapsulation, Inject, PLATFORM_ID, NgZone } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { extractColors } from './utils/color-extractor';
 
 interface Song {
   id: number;
@@ -216,12 +217,37 @@ export class App {
     ['#fc4a1a', '#f7b733', '#fc4a1a'], // Sunset
   ];
 
+  extractedColors = signal<string[]>([]);
+
   currentColors = computed(() => {
+    if (this.extractedColors().length > 0) {
+      return this.extractedColors();
+    }
     const songId = this.currentSong().id;
     return this.COLOR_PALETTES[songId % this.COLOR_PALETTES.length];
   });
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private ngZone: NgZone) {
+    // Extract colors when song changes
+    effect(() => {
+      const coverUrl = this.currentSong().coverUrl;
+      if (isPlatformBrowser(this.platformId) && coverUrl) {
+        extractColors(coverUrl).then(colors => {
+          if (colors.length > 0) {
+            // If we found colors, use them. 
+            // Fill up to 3 colors if needed by repeating
+            const finalColors = [...colors];
+            while (finalColors.length < 3) {
+              finalColors.push(finalColors[0]);
+            }
+            this.extractedColors.set(finalColors);
+          } else {
+            this.extractedColors.set([]);
+          }
+        });
+      }
+    }, { allowSignalWrites: true });
+
     if (isPlatformBrowser(this.platformId)) {
       this.audio = new Audio();
       // Configure global audio events
