@@ -207,6 +207,20 @@ export class App {
 
   formattedCurrentTime = computed(() => this.formatTime(this.currentSongTime()));
 
+  // Dynamic Background Colors (Apple Music Style)
+  readonly COLOR_PALETTES = [
+    ['#ff0080', '#ff8c00', '#40e0d0'], // Vibrant
+    ['#2193b0', '#6dd5ed', '#2193b0'], // Ocean
+    ['#cc2b5e', '#753a88', '#cc2b5e'], // Purple/Pink
+    ['#000000', '#0f9b0f', '#000000'], // Matrix/Dark
+    ['#fc4a1a', '#f7b733', '#fc4a1a'], // Sunset
+  ];
+
+  currentColors = computed(() => {
+    const songId = this.currentSong().id;
+    return this.COLOR_PALETTES[songId % this.COLOR_PALETTES.length];
+  });
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private ngZone: NgZone) {
     if (isPlatformBrowser(this.platformId)) {
       this.audio = new Audio();

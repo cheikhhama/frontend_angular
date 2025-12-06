@@ -273,7 +273,15 @@
   </footer>
 
   <!-- Full Screen Player Overlay -->
-  <div class="full-player" [class.open]="isPlayerOpen()">
+  <div class="full-player" [class.open]="isPlayerOpen()" [class.paused]="!isPlaying()">
+    
+    <!-- Animated Background Bubbles -->
+    <div class="animated-bg">
+      <div class="blob blob-1" [style.background-color]="currentColors()[0]"></div>
+      <div class="blob blob-2" [style.background-color]="currentColors()[1]"></div>
+      <div class="blob blob-3" [style.background-color]="currentColors()[2]"></div>
+    </div>
+
     <button class="btn-close-player" (click)="isPlayerOpen.set(false)">
       <svg class="icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>

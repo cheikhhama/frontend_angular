@@ -996,18 +996,122 @@
 .full-player {
   position: fixed;
   inset: 0;
-  background: linear-gradient(to bottom, #2c2c2e, #000);
+  background-color: #000;
   z-index: 100;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   transform: translateY(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-y: auto;
+  overflow: hidden;
+}
+
+.animated-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: #000;
+}
+
+.blob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 90vmax;
+  height: 90vmax;
+  background-color: #ff0080;
+  animation: moveBlob1 20s infinite alternate;
+}
+
+.blob-2 {
+  width: 80vmax;
+  height: 80vmax;
+  background-color: #ff8c00;
+  animation: moveBlob2 25s infinite alternate-reverse;
+}
+
+.blob-3 {
+  width: 70vmax;
+  height: 70vmax;
+  background-color: #40e0d0;
+  animation: moveBlob3 22s infinite alternate;
+}
+
+/* Pause animation when song is paused */
+.full-player.paused .blob {
+  animation-play-state: paused;
+}
+
+
+@keyframes moveBlob1 {
+  0% {
+    transform: translate(-50%, -50%) translate(-20%, -10%) scale(1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translate(20%, 10%) scale(1.1);
+  }
+}
+
+@keyframes moveBlob2 {
+  0% {
+    transform: translate(-50%, -50%) translate(20%, -20%) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translate(-20%, 20%) scale(0.9);
+  }
+}
+
+@keyframes moveBlob3 {
+  0% {
+    transform: translate(-50%, -50%) translate(-10%, 20%) scale(0.9);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translate(10%, -20%) scale(1.2);
+  }
+}
+
+z-index: 100;
+display: flex;
+flex-direction: column;
+padding: 2rem;
+transform: translateY(100%);
+transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+overflow-y: auto;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .full-player.open {
   transform: translateY(0);
+}
+
+.full-player.paused {
+  animation-play-state: paused;
 }
 
 .btn-close-player {
@@ -1445,7 +1549,7 @@
   box-shadow: 2px 2px 0 0 black;
   image-rendering: pixelated;
   /* Keep it round */
-  border-radius: 50% !important; 
+  border-radius: 50% !important;
 }
 
 .pixel-mode .hero-card {
