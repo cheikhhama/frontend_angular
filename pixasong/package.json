@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:pixasong": "node dist/pixasong/server/server.mjs"
+    "serve:ssr:pixasong": "node dist/pixasong/server/server.mjs",
+    "preview": "npx serve dist/pixasong/browser"
   },
   "prettier": {
     "printWidth": 100,

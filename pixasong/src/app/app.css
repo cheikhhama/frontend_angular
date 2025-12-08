@@ -1489,6 +1489,7 @@
   border-radius: 0 !important;
   backdrop-filter: none !important;
   transition: none !important;
+  z-index: 1000 !important;
 }
 
 .pixel-mode .main-content {

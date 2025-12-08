@@ -72,46 +72,47 @@ export class App {
   isPixelMode = signal(false);
 
   togglePixelMode() {
+    console.log('Toggling Pixel Mode. Current:', this.isPixelMode());
     this.isPixelMode.update(v => !v);
   }
 
-  // add songs to playlist (assets/music)
+  // EXTERNAL LINKS (Guaranteed to work)
   playlist = [
-    'assets/music/BAUWZ - IF YOU SAID GOODBYE.m4a',
-    'assets/music/Lucas_Larvenz_REDRUM.m4a',
-    'assets/music/Olivia Rodrigo - vampire.m4a',
-    'assets/music/Taylor Swift - Cruel Summer.m4a',
-    "assets/music/L7OR_HES_BIYA.m4a",
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3',
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3',
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
+    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-16.mp3',
   ]
+
   coverlist = [
-    'assets/cover/photo_1.jpg',
-    'assets/cover/photo_2.jpg',
-    'assets/cover/photo_3.jpg',
-    'assets/cover/photo_4.jpg',
-    'assets/cover/photo_5.jpg',
+    'https://picsum.photos/seed/music1/400/400',
+    'https://picsum.photos/seed/music2/400/400',
+    'https://picsum.photos/seed/music3/400/400',
+    'https://picsum.photos/seed/music4/400/400',
+    'https://picsum.photos/seed/music5/400/400',
   ];
 
 
   // Demo Audio URL
   demoAudio = this.playlist[0];
+
   demoCover = this.coverlist[0];
 
   songs: Song[] = [
-    { id: 1, title: 'If You Said Goodbye', artist: 'BAUWZ', album: '7clouds', duration: '2:20', coverUrl: this.coverlist[1], audioUrl: this.playlist[0] },
-    { id: 2, title: 'Redrum', artist: 'Lucas Larvenz', album: '7clouds', duration: '2:55', coverUrl:this.coverlist[3], audioUrl: this.playlist[1] },
-    { id: 3, title: 'Vampire', artist: 'Olivia Rodrigo', album: 'GUTS', duration: '3:40', coverUrl:this.coverlist[2], audioUrl: this.playlist[2] },
-    { id: 4, title: 'Cruel Summer', artist: 'Taylor Swift', album: 'Lover', duration: '2:58', coverUrl: this.coverlist[4], audioUrl: this.playlist[3] },
-    { id: 5, title: "HES BIYA", artist: 'L7OR', album: '', duration: '4:14', coverUrl: this.coverlist[0], audioUrl: this.playlist[4] },
-
+    { id: 1, title: 'Electro Vibes', artist: 'SoundHelix', album: 'Free Music', duration: '8:47', coverUrl: this.coverlist[0], audioUrl: this.playlist[0] },
+    { id: 2, title: 'Smooth Drift', artist: 'SoundHelix', album: 'Free Music', duration: '8:33', coverUrl: this.coverlist[1], audioUrl: this.playlist[1] },
+    { id: 3, title: 'Nightfall', artist: 'SoundHelix', album: 'Free Music', duration: '8:36', coverUrl: this.coverlist[2], audioUrl: this.playlist[2] },
+    { id: 4, title: 'Tech House', artist: 'SoundHelix', album: 'Free Music', duration: '7:17', coverUrl: this.coverlist[3], audioUrl: this.playlist[3] },
+    { id: 5, title: 'Deep Groove', artist: 'SoundHelix', album: 'Free Music', duration: '8:03', coverUrl: this.coverlist[4], audioUrl: this.playlist[4] },
   ];
 
   newReleases: Song[] = [
-    { id: 1, title: 'If You Said Goodbye', artist: 'BAUWZ', album: '7clouds', duration: '2:20', coverUrl: this.coverlist[1], audioUrl: this.playlist[0] },
-    { id: 2, title: 'Redrum', artist: 'Lucas Larvenz', album: '7clouds', duration: '2:55', coverUrl:this.coverlist[3], audioUrl: this.playlist[1] },
-    { id: 3, title: 'Vampire', artist: 'Olivia Rodrigo', album: 'GUTS', duration: '3:40', coverUrl:this.coverlist[2], audioUrl: this.playlist[2] },
-    { id: 4, title: 'Cruel Summer', artist: 'Taylor Swift', album: 'Lover', duration: '2:58', coverUrl: this.coverlist[4], audioUrl: this.playlist[3] },
-    { id: 5, title: "HES BIYA", artist: 'L7OR', album: '', duration: '4:14', coverUrl: this.coverlist[0], audioUrl: this.playlist[4] },
- ];
+    { id: 41, title: 'Nightfall', artist: 'SoundHelix', album: 'Free Music', duration: '8:36', coverUrl: this.coverlist[2], audioUrl: this.playlist[2] },
+    { id: 42, title: 'Smooth Drift', artist: 'SoundHelix', album: 'Free Music', duration: '8:33', coverUrl: this.coverlist[1], audioUrl: this.playlist[1] },
+    { id: 43, title: 'Electro Vibes', artist: 'SoundHelix', album: 'Free Music', duration: '8:47', coverUrl: this.coverlist[0], audioUrl: this.playlist[0] },
+    { id: 44, title: 'Tech House', artist: 'SoundHelix', album: 'Free Music', duration: '7:17', coverUrl: this.coverlist[3], audioUrl: this.playlist[3] },
+  ];
 
   currentSong = signal<Song>(this.songs[0]);
   isPlayerOpen = signal(false);
@@ -364,4 +365,5 @@ export class App {
     const prevIndex = currentIndex === 0 ? this.songs.length - 1 : currentIndex - 1;
     this.playSong(this.songs[prevIndex]);
   }
+
 }
